@@ -13,8 +13,8 @@ spec:
     spec:
       containers:
         - name: nginx-container
-          image: nginx:latest
+          image: nginx:1.29.0-alpine-slim
   selector:
     matchLabels:
       env: production
-  replicas: 4
+  replicas: 8
