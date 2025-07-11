@@ -3,12 +3,13 @@ kind: Deployment
 metadata:
   name: frontend-deployment
   labels:
-    app: frontend
+    app: nginx
 spec:
   template:
     metadata:
       name: pod-nginx
       labels:
+        app: nginx
         env: production
     spec:
       containers:
@@ -16,5 +17,6 @@ spec:
           image: nginx:1.29.0-alpine-slim
   selector:
     matchLabels:
+      app: nginx
       env: production
-  replicas: 8
+  replicas: 2
