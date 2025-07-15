@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-nodeselector
+spec:
+  containers:
+  - name: redis-nodeselector
+    image: nginx:latest
+  nodeSelector:
+    disktype: ssd
+
