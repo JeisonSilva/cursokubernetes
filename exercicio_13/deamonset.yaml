@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: redis-daemonset
+  labels:
+    app: redis
+spec:
+  template:
+    metadata:
+      labels:
+        apps: redis-frontend
+        tier: database
+    spec:
+      containers:
+        - name: redis
+          image: redis:latest
+          ports:
+            - containerPort: 6379
+      nodeSelector:
+        disktype: ssd
+  selector:
+    matchLabels:
+      apps: redis-frontend
