@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: daemonset-strategy
+  labels:
+    app: frontend-deamonset
+spec:
+  updateStrategy:
+    type: OnDelete
+  template:
+    metadata:
+      name: daemonset-strategy
+      labels:
+        apps: my-app
+        tier: frontend
+    spec:
+      containers:
+        - name: httpd
+          image: tomcat:latest
+  selector:
+    matchLabels:
+      apps: my-app
+
