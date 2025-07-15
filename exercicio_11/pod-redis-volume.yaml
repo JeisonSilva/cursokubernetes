@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: redis-pod-volume-host
+spec:
+  containers:
+    - name: redis-volume-host
+      image: redis:latest
+      volumeMounts:
+        - mountPath: /my-data
+          name: my-hostpath-vol
+  volumes:
+    - name: my-hostpath-vol
+      hostPath:
+        path: /var/lib/2-persist
