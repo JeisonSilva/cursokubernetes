@@ -1,0 +1,26 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: my-cronjob-parallelism
+spec:
+  failedJobsHistoryLimit: 5
+  successfulJobsHistoryLimit: 10
+  schedule: "* * * * *"
+  jobTemplate:
+    spec:
+      completions: 10
+      completionMode: "Indexed"
+      parallelism: 4
+      template:
+        spec:
+          containers:
+          - name: my-cronjob-parallelism
+            image: busybox
+            command:
+            - "bin/sh"
+            - "-c"
+            - "for i in 1 2; do echo Lucky number $i = $((1 + RANDOM % 70)); done"
+          restartPolicy: Never
+
+
+
