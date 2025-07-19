@@ -1,0 +1,29 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: dados-cm
+data:
+  # Connection db
+  database: mongdb
+  database_url: mongodb://localhost:27017
+
+  # Config frontend
+  font.title: Arial
+  background-color: red
+  theme.1: clean
+  1theme.2: dark
+
+---
+
+kind: Pod
+apiVersion: v1
+metadata:
+  name: pod-cm
+spec:
+  containers:
+  - name: nginx-cm
+    image: nginx:latest
+    envFrom:
+    - configMapRef:
+        name: dados-cm
+
