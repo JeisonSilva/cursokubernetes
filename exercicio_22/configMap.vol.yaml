@@ -1,0 +1,7 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: dados-cm-vol
+data:
+  database: mongodb://localhost:17070
+  title: "Teste de variavel de ambiente"

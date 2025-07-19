@@ -1,0 +1,22 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: pod-configmap-vol
+
+spec:
+  containers:
+  - name: pod-configmap-vol
+    image: nginx
+    envFrom:
+    - configMapRef:
+        name: dados-cm-vol
+    volumeMounts:
+    - name: cm-vol
+      mountPath: "/etc/my-vol"
+      readOnly: true
+
+  volumes:
+  - name: cm-vol
+    configMap:
+      name: dados-cm-vol
+
