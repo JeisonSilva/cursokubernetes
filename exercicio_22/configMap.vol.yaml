@@ -3,5 +3,7 @@ apiVersion: v1
 metadata:
   name: dados-cm-vol
 data:
-  database: mongodb://localhost:17070
+  database: |
+    mongodb://localhost:17070
+    mysql://localhost:3434
   title: "Teste de variavel de ambiente"
